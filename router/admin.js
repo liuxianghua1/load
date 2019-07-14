@@ -10,6 +10,7 @@ router.get('/admin', function(req, res) {
 
 router.post('/admin', function (req, res) {
    var body = req.body
+
 //    console.log(body.loginname)
    Admin.findOne({
        loginname: body.loginname,
@@ -31,7 +32,6 @@ router.post('/admin', function (req, res) {
 
        // 记录登录状态
        req.session.admin = admin
-
        res.status(200).json({
            err_code: 0,
            message: 'Ok'
@@ -59,21 +59,25 @@ router.get('/admin-add', checkLogin, function(req, res) {
     res.render('admin/admin-add.html')
 })
 
+
 router.get('/admin/delete', checkLogin, function(req,res){
-
-  var id = req.query.id
-
+    var id = req.query.id
+    var sessionId= req.session.admin._id
+    var adminId=req.query.id
     Admin.findByIdAndRemove(id,function(err){
       if (err) {
           return res.status(500).send('Delete error')
       }
-    //   delete req.session.admin
 
-    //   res.redirect('/index');	
+      if ( adminId === sessionId) {
+        delete req.session.admin
+      } else {
+
+      }
     })
 })
 
-router.post('/admin-add',  checkLogin, function(req, res) {
+router.post('/admin-add',  checkLogin, function(req, res){
 	var body = req.body
     // console.log(body)
     Admin.findOne({
