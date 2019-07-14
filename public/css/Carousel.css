@@ -1,0 +1,28 @@
+.container{
+	width: 100%;
+	padding: 0px;
+	margin: 0px;
+	margin-bottom: 1px;
+	position: absolute;
+	top: 150px;
+}
+.carousel-indicators li {
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    margin-left: 20px;
+    text-indent: -999px;
+    cursor: pointer;
+   	background-color: white;
+    border: 0px solid #fff;
+    border-radius: 10px;
+    }
+.carousel-indicators .active {
+    width: 20px;
+    height: 20px;
+     margin-left: 20px;
+    background-color: rgb(132,194,37);
+}
+.product-title ol li{
+	background-color: black !important;
+}

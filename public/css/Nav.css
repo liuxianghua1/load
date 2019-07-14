@@ -1,0 +1,92 @@
+.top{
+	border: solid 1px #ececec;
+	background-color: #fcfbfb;
+	height: 43px;
+	width: 100%;
+	top: 0px;	
+	left: 0px;
+	line-height: 43px;
+	position:absolute;
+}
+.top-left h3{
+	color: #666666;
+    font-size: 14px;
+    font-family: "Microsoft yahei";
+    font-weight: normal;
+    display: block;
+    position: absolute;
+    top: -5px;
+    	margin-left: 50px;
+}
+.top-right{
+	float: right;
+}
+.phone{
+	color: #666666;
+    font-size: 14px;
+    font-family: "Microsoft yahei";
+    font-weight: normal;
+    display: block;
+   	margin-right: 250px;
+}
+.phone-img{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 3px;	
+    width: 18px;
+    margin-top: -5px;
+}
+.top span b{
+	    color: #84c225;
+    font-size: 20px;
+    font-weight: bold;
+}
+#bootStrap-nav .container{
+	width: 100%;
+	padding: 0px;
+	margin-top: 43.3px;
+	/*border:none;*/
+}
+/*.collapse .navbar-collapse{
+	border:none;
+}
+#bs-example-navbar-collapse-1{
+	border:none;
+}*/
+.bootStrap-nav-logo{
+	width: 140px;
+	height: 100%;
+}
+
+.navbar li{ float: left;  margin: 0 10px; position: relative; }
+
+.navbar li>a{ display: block; color: #333333; font-size: 16px; line-height: 106px; width: 104px; text-align: center;
+
+transition: 0.6s; background: #fff; position: relative; z-index: 333;}
+
+.navbar li b{ position: absolute; bottom: 0; left: 0; right: 0; height: 0; transition: all 0.6s; display: block; background: #84C225; }
+
+.navbar li.on a{ background:#84C225; color: #fff;}
+
+.navbar li:hover b,.navbar li.on b{ top: 0; height: 106px; z-index:-1;}
+
+.navbar li:hover>a,.navbar li.on>a{ color: #fff;}
+
+
+
+.subnav{ display: none; position: absolute; top: 106px; left: 0; right: 0; background: #000; z-index: 999; } 
+
+.subnav a{ display: block; height: 40px; line-height: 40px; text-align: center; color: #fff; font-size: 14px;  transition: all 0.6s;}
+
+.subnav a:hover{ background:#84C225;}
+
+.w1200{ width: 1200px; margin: 0 auto; }
+
+ul,li{ list-style:none; border:0; margin:0; padding:0;}
+
+a,li{ text-decoration: none;}
+#nav{margin-top:-85px;margin-left: 450px;}
+#logo{margin-left: 150px;margin-top: 60px;}
+#nav a{
+	text-decoration: none;
+}

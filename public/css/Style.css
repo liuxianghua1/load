@@ -1,0 +1,570 @@
+.product .product-show {
+	border: black solid 0px;
+	width: 1530px;
+	position: absolute;
+	top: 660px;
+	margin: 0 auto;
+	zoom: 1;
+}
+
+.product-title {
+	text-align: center;
+	font-weight: bold;
+	color: #333333;
+	font-size: 36px;
+	font-family: "microsoft yahei";
+	background: url(../img/tit-bg.png)no-repeat center;
+}
+
+.product-title span {
+	color: #84C225;
+	font-weight: bold;
+}
+
+.product-title~p {
+	font-size: 16px;
+	text-align: center;
+	line-height: 200%;
+	color: #666;
+	font-family: "微软雅黑";
+}
+
+.border {
+	border: #e5e5e5 solid 1px;
+	width: 288px;
+	height: 295px;
+	float: left;
+	margin-left: 20px;
+	margin-top: 20px;
+	overflow: hidden;
+}
+
+.picture {
+	width: 280px;
+	height: 250px;
+}
+
+.product-name {
+	text-align: center;
+	font-size: 14px;
+	color: #333333;
+	text-decoration: none;
+	line-height: 40px;
+}
+
+a:hover {
+	color: white !important;
+}
+
+.border:hover .picture {
+	transition: all 0.8s;
+	transform: scale(1.1);
+}
+
+.border:hover {
+	box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.1)
+}
+
+.more {
+	border: solid 1px #cccccc;
+	width: 115px;
+	height: 39px;
+	text-align: center;
+	line-height: 39px;
+	position: absolute;
+	top: 790px;
+	left: 700px;
+	background-color: #ffffff;
+	font-size: 14px;
+	color: #999;
+	z-index: 1;
+}
+
+.more::before {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 0%;
+	content: "";
+	display: block;
+	background: #84c225;
+	bottom: 0;
+	transition: all 0.6s;
+	z-index: -1;
+}
+
+.more::after {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 0%;
+	content: "";
+	display: block;
+	background: #84c225;
+	bottom: 0;
+	transition: all 0.6s;
+	z-index: -1;
+}
+
+.more:hover::before,
+.more:hover::after {
+	width: 50%;
+}
+
+.more:hover {
+	color: #fff;
+}
+
+.about {
+	background: url(../img/bg1.jpg)no-repeat center;
+	border: black solid 0px;
+	zoom: 1;
+	width: 1519px;
+	height: 600px;
+	margin: 0 auto;
+	position: absolute;
+	top: 1540px;
+}
+
+.content {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.about h2 {
+	color: #fff;
+	font-size: 36px;
+	font-weight: bold;
+	margin-top: 40px;
+}
+
+h2+b {
+	display: block;
+	background: #fff;
+	width: 55px;
+	height: 1px;
+	margin-top: 35px;
+	margin-bottom: 40px;
+}
+
+.about .p1 {
+	color: #fff;
+	width: 537px;
+	font-size: 16px;
+	line-height: 30px;
+	height: 210px;
+	overflow: hidden;
+}
+
+.amount li {
+	float: left;
+	width: 150px;
+	transition: all 1s;
+	cursor: pointer;
+	font-family: "Microsoft yahei";
+}
+
+.amount li p {
+	text-align: center;
+	color: #fff;
+	font-size: 16px;
+	line-height: 80px;
+}
+
+.amount li strong {
+	display: inline-block;
+	color: #fff;
+	font-weight: bold;
+	font-size: 48px;
+}
+
+.amount li div {
+	text-align: center;
+	line-height: 1px;
+}
+
+.amount li b {
+	color: #fff;
+	font-size: 16px;
+	margin-left: 5px;
+}
+
+.amount li:hover {
+	transform: translateY(20px);
+}
+
+.amount .more {
+	border: solid 1px #cccccc;
+	width: 115px;
+	height: 39px;
+	text-align: center;
+	line-height: 39px;
+	position: absolute;
+	top: 520px;
+	left: 150px;
+	background-color: #85c226;
+	font-size: 14px;
+	color: white;
+	z-index: 1;
+}
+
+.amount .more::before {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 0%;
+	content: "";
+	display: block;
+	background: white;
+	bottom: 0;
+	transition: all 0.6s;
+	z-index: -1;
+}
+
+.amount .more::after {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 0%;
+	content: "";
+	display: block;
+	background: white;
+	bottom: 0;
+	transition: all 0.6s;
+	z-index: -1;
+}
+
+.amount .more:hover::before,
+.amount .more:hover::after {
+	width: 50%;
+}
+
+.amount .more:hover {
+	color: #85c226 !important;
+}
+
+.course-show {
+	border: black solid 0px;
+	
+	position: absolute;
+	top: 2150px;
+	width: 1519px;
+	margin: 0 auto;
+	zoom: 1;
+}
+
+.course-title {
+	text-align: center;
+	font-weight: bold;
+	color: #333333;
+	font-size: 36px;
+	font-family: "microsoft yahei";
+	background: url(../img/tit-bg.png)no-repeat center;
+}
+
+.course-title span {
+	color: #84C225;
+	font-weight: bold;
+}
+
+.course-title~p {
+	font-size: 16px;
+	text-align: center;
+	line-height: 200%;
+	color: #666;
+	font-family: "微软雅黑";
+}
+
+.course-show .border {
+	border: #e5e5e5 solid 0px;
+	background: #FCFBFB;
+	width: 390px;
+	height: 425px;
+	float: left;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+.course-show .border .picture {
+	width: 100%;
+	height: 300px;
+}
+
+.course-show .border .product-name {
+	text-align: center;
+	font-size: 18px;
+	color: #333333;
+	text-decoration: none;
+	padding: 0px 0 0px 0;
+}
+
+.product-name+p {
+	height: 60px;
+	line-height: 30px;
+	overflow: hidden;
+	color: #666;
+	font-size: 15px;
+}
+
+.course-show .border:hover .picture {
+	transition: all 1.6s;
+	transform: scale(1.1);
+}
+
+.course .border:hover {
+	box-shadow: 0 0 0px 5px #84C225;
+	background: #84c255;
+}
+
+.course .border:hover p {
+	color: white;
+}
+
+.course .border:hover .product-name {
+	color: white;
+}
+
+.course .border p {
+	padding: 0 30px 20px 30px;
+}
+
+.course .border {
+	transition: all 0.6s;
+}
+
+.course-show .more {
+	position: absolute;
+	top: 630px;
+}
+
+.control {
+	overflow: hidden;
+}
+
+.supply {
+	background-color: #F5F5F5;
+	width: 1519px;
+	zoom: 1;
+	margin: 0 auto;
+	height: 666px;
+	margin-top: 2750px;
+}
+
+.supply-title {
+	text-align: center;
+	font-weight: bold;
+	color: #333333;
+	font-size: 36px;
+	font-family: "microsoft yahei";
+	background: url(../img/tit-bg.png)no-repeat center;
+}
+
+.supply-title span {
+	color: #84C225;
+	font-weight: bold;
+}
+
+.supply-title~p {
+	font-size: 16px;
+	text-align: center;
+	line-height: 200%;
+	color: #666;
+	font-family: "微软雅黑";
+}
+
+@charset "utf-8";
+.cd-top {
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	position: fixed;
+	bottom: 40px;
+	right: 10px;
+	/* image replacement properties */
+	overflow: hidden;
+	text-indent: 100%;
+	white-space: nowrap;
+	background: url(../img/返回顶部.png) no-repeat center 50%;
+	visibility: hidden;
+	opacity: 0;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.cd-top.cd-is-visible {
+	/* the button becomes visible */
+	visibility: visible;
+	opacity: 1;
+}
+
+.cd-top.cd-fade-out {
+	/* 如果用户继续向下滚动,这个按钮的透明度会变得更低 */
+	opacity: .5;
+}
+
+.no-touch .cd-top:hover {
+	background-color: #e86256;
+	opacity: 1;
+}
+
+@media only screen and (min-width: 768px) {
+	.cd-top {
+		right: 20px;
+		bottom: 20px;
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+	.cd-top {
+		height: 60px;
+		width: 60px;
+		right: 30px;
+		bottom: 30px;
+	}
+}
+
+.div1 {
+	float: left;
+	margin-right: 20px;
+}
+
+.demo2 {
+	height: 424px;
+	width: 1300px;
+	margin-left: 197px;
+}
+
+.demo2 figure {
+	overflow: hidden;
+}
+
+.div1 figure img {
+	height: 172px;
+	width: 290px;
+}
+
+.div3 figure img {
+	height: 172px;
+	width: 290px;
+}
+
+.demo2 p {
+	background-color: #84C225;
+	color: white;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.div2 {
+	width: 500px;
+	overflow: hidden;
+}
+
+.div2 figure img {
+	height: 389px;
+}
+
+.demo2 a:hover img {
+	transition: all 1.6s;
+	transform: scale(1.1);
+}
+
+.div3 {
+	float: right;
+	margin-top: -434px;
+	margin-right: 180px;
+}
+
+.carousel {
+	background-color: white;
+	height: 700px;
+}
+
+.oem {
+	height: 424px;
+	width: 1120px;
+	margin-left: 197px;
+}
+
+.oem1 {
+	float: left;
+}
+
+.oem1 img {
+	width: 280px;
+	height: 200px;
+}
+
+.oem1 figure {
+	background-color: #F5F5F5;
+	height: 400px;
+}
+
+.oem1:hover figure {
+	background-color: #84C225;
+}
+
+.oem1 h3 {
+	color: black;
+	font-size: 18px;
+	text-align: center;
+	padding: 0 0 10px 0;
+}
+
+.oem1 p {
+	font-size: 14px;
+	color: #666;
+	text-align: center;
+	height: 60px;
+	line-height: 30px;
+	overflow: hidden;
+}
+
+.oem1:hover img {
+	transition: all 0.6s;
+	transform: scale(1.1);
+}
+
+.oem1:hover p {
+	color: white;
+}
+
+.oem1:hover h3 {
+	color: white;
+}
+
+.oem1:hover #demo {
+	transition: all 0.6s;
+	border: solid 1px white;
+	color: white;
+}
+
+#demo {
+	display: block;
+	width: 99px;
+	height: 34px;
+	border: solid 1px #cccccc;
+	color: #333;
+	font-size: 14px;
+	text-align: center;
+	line-height: 34px;
+	margin: -10px auto 0 auto;
+}
+
+.overflow {
+	overflow: hidden;
+}
+
+.descend {
+	height: 6px;
+}
+#carousel-example-generic{
+	width: 1519px;
+	zoom: 1;
+	margin: 0 auto;
+}
