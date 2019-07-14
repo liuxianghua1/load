@@ -1,7 +1,8 @@
 module.exports = {
     checkLogin: function checkLogin (req, res, next) {
       if (!req.session.admin) {
-        return res.redirect('/404')
+        return res.render('404/404.html')
+        // 未登录读取404页面
       }
       next()
     },
