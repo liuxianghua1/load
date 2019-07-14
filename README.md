@@ -6,6 +6,8 @@ cnpm i -S express
 cnpm i express-art-template art-template body-parser mongoose blueimp-md5 express-session nodemon
 
 记得安装bootstrap和jq
+bootstrap v3.37
+放入
 
 nodemon app.js
 
