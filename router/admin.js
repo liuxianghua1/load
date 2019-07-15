@@ -4,91 +4,91 @@ var Admin = require('../models/admin')
 var router = express.Router()
 var checkLogin = require('../middlewares/check').checkLogin
 
-router.get('/admin', function(req, res) {
-    res.render('admin/admin.html') 
+router.get('/admin', function (req, res) {
+    res.render('admin/admin.html')
 })
 
 router.post('/admin', function (req, res) {
-   var body = req.body
+    var body = req.body
 
-//    console.log(body.loginname)
-   Admin.findOne({
-       loginname: body.loginname,
-       password: md5(md5(body.password) + 'admin')
-   }, function (err, admin) {
-       if (err) {
-           return res.status(500).json({
-               err_code: 500,
-               message: err.message
-           })
-       }
+    //    console.log(body.loginname)
+    Admin.findOne({
+        loginname: body.loginname,
+        password: md5(md5(body.password) + 'admin')
+    }, function (err, admin) {
+        if (err) {
+            return res.status(500).json({
+                err_code: 500,
+                message: err.message
+            })
+        }
 
-       if (!admin) {
-        return res.status(200).json({
-            err_code: 1,
-            message: 'Mail or password is incorrect'
+        if (!admin) {
+            return res.status(200).json({
+                err_code: 1,
+                message: 'Mail or password is incorrect'
+            })
+        }
+
+        // 记录登录状态
+        req.session.admin = admin
+        res.status(200).json({
+            err_code: 0,
+            message: 'Ok'
         })
-       }
-
-       // 记录登录状态
-       req.session.admin = admin
-       res.status(200).json({
-           err_code: 0,
-           message: 'Ok'
-       })
-   })
+    })
 })
 
 
 
-router.get('/index', checkLogin, function(req, res) {
+router.get('/index', checkLogin, function (req, res) {
     if (req.session.admin) {
-       res.render('admin/index.html', {
-		 admin: req.session.admin
-	})
-    }else{
+        res.render('admin/index.html', {
+            admin: req.session.admin
+        })
+    } else {
         res.render('404/404.html')
     }
 })
 
-router.get('/welcome', checkLogin, function(req, res) {
+router.get('/welcome', checkLogin, function (req, res) {
     res.render('admin/welcome.html')
 })
 
-router.get('/admin-add', checkLogin, function(req, res) {
+router.get('/admin-add', function (req, res) {
     res.render('admin/admin-add.html')
 })
 
 
-router.get('/admin/delete', checkLogin, function(req,res){
+router.get('/admin/delete', checkLogin, function (req, res) {
     var id = req.query.id
-    var sessionId= req.session.admin._id
-    var adminId=req.query.id
-    Admin.findByIdAndRemove(id,function(err){
-      if (err) {
-          return res.status(500).send('Delete error')
-      }
+    var sessionId = req.session.admin._id
+    var adminId = req.query.id
+    Admin.findByIdAndRemove(id, function (err) {
+        if (err) {
+            return res.status(500).send('Delete error')
+        }
 
-      if ( adminId === sessionId) {
-        delete req.session.admin
-      } else {
+        if (adminId === sessionId) {
+            delete req.session.admin
+        } else {
 
-      }
+        }
     })
 })
 
-router.post('/admin-add',  checkLogin, function(req, res){
-	var body = req.body
+router.post('/admin-add', function (req, res) {
+    var body = req.body
     // console.log(body)
     Admin.findOne({
         $or: [{
-            loginname : body.loginname
-            },
-            {
-            phone : body.phone
-            }
+            loginname: body.loginname
+        },
+        {
+            phone: body.phone
+        }
         ]
-    }, function(err, data) {
+    }, function (err, data) {
         if (err) {
             return res.status(500).json({
                 err_code: 500,
@@ -114,7 +114,6 @@ router.post('/admin-add',  checkLogin, function(req, res){
                 err_code: 0,
                 message: 'ok'
             })
-
         })
 
 
@@ -122,37 +121,90 @@ router.post('/admin-add',  checkLogin, function(req, res){
 
 })
 
-router.get('/admin-edit', checkLogin, function(req, res) {
-    res.render('admin/admin-edit.html')
+router.post('/admin-edit', function (req, res) {
+        var body = req.body
+        var id = body.id
+        var password = {'phone' : body.phone ,'password' : md5(md5(body.newpass) + 'admin')}
+        var newpass = md5(md5(body.newpass) + 'admin')
+        var oldpass = md5(md5(body.password) + 'admin')
+        Admin.findOne({
+            $and: [{
+                _id : body.id,
+                password : oldpass
+            }]
+        }, function(err, data) {
+            if (!data) {
+                return res.status(200).json({
+                    err_code : 2,
+                    message :'Password in Error.'
+                })
+            }
+
+            if (newpass===oldpass) {
+                return res.status(200).json({
+                    err_code : 3,
+                    message :'The new password matches the old one.'
+                })
+            } 
+            Admin.findByIdAndUpdate(id,password,function(err) {
+                if (err) {
+                    console.log(err)
+                    return res.status(500).json({
+                        err_code: 500,
+                        message: '服务端错误'
+                    })
+                } else {
+                    res.status(200).json({
+                        err_code: 0,
+                        message: 'ok'
+                    })
+                }
+            })
+        })
+    })
+
+router.get('/admin-edit', function (req, res) {
+    var id = req.query.id
+    Admin.findById(id, function (err, admin) {
+        if (err) {
+            return res.status(500).send('Server error.')
+        }
+        res.render('admin/admin-edit.html', {
+            admin: admin
+        }
+        )
+    })
 })
 
-router.get('/admin-list', checkLogin, function(req, res) {
+
+
+router.get('/admin-list', checkLogin, function (req, res) {
     Admin.find(function (err, admin) {
         if (err) {
             return res.status(500).send('Server error.')
         }
         res.render('admin/admin-list.html', {
-            admin : admin
+            admin: admin
         })
     })
 })
 
-router.get('/admin-role', checkLogin, function(req, res) {
+router.get('/admin-role', checkLogin, function (req, res) {
     res.render('admin/admin-role.html')
 })
 
-router.get('/order-add', checkLogin, function(req, res) {
+router.get('/order-add', checkLogin, function (req, res) {
     res.render('admin/order-add.html')
 })
 
-router.get('/order-list', checkLogin, function(req, res) {
+router.get('/order-list', checkLogin, function (req, res) {
     res.render('admin/order-list.html')
 })
 
 router.get('/logout', checkLogin, function (req, res) {
     delete req.session.admin
 
-    res.redirect('/admin');	
+    res.redirect('/admin');
 })
 
 module.exports = router
