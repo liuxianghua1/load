@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+
+</head>
+<body>
+			<input type="file" id="file" />
+			<img src="" alt=""/>
+			<button  onclick="doUpload()">提交</button>
+
+            <script src="/node_modules/jquery/dist/jquery.js"></script>
+	<script>
+		function doUpload(){
+		var file = $('#file').get(0).files[0]
+		let formdata = new FormData()
+		formdata.append('hehe', file)
+		console.log(file)
+
+		$.ajax({
+			url: '/upload',
+			type: 'post',
+			cache: false,
+			data: formdata,
+			processData: false,
+			contentType: false,
+			success: function(data) {
+				var err_code = data.err_code
+				if (err_code===0) {
+					$('img').attr('src',`${data.img}`)
+				} else if(err_code===-1){
+					alert('尺寸过大')
+				}else if(err_code===-2){
+					alert('类型错误')
+				}
+			}
+		})
+		}
+	</script>
+</body>
+</html>

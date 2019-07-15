@@ -23,7 +23,7 @@ app.use(session({
 	secret: 'recommand 128 bytes random string', // 使用 128 个字符的随机字符串
 	resave: true,
     saveUninitialized: true,
-	cookie: { maxAge: 60 * 1000 * 10}
+	cookie: { maxAge: 60 * 1000 * 30}
   }));
 
 
