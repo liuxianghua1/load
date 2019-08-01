@@ -1,0 +1,117 @@
+<!-- 需求开始 -->
+<div class="demand">
+        <div class="form">
+                <h1>填写您的项目需求给我们</h1>
+            <form class="layui-form" id="myform"  name="formdemand"method="post" action="demand">
+            <div class="clearfix">
+                <input type="text" id="name" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')" onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))" maxlength=4 name="name" required="" placeholder="你的姓名" lay-verify="required|name"
+                    autocomplete="off" class="layui-input">
+            
+                <input type="text" id="phone" name="phone" required="" maxlength=11 placeholder="联系电话" lay-verify="phone" autocomplete="off"
+                    class="text t2">
+                    <textarea name="content" required="" id="content" autocomplete="off" maxlength=100 placeholder="留言内容,免费获取品牌方案" class="text t3"
+                        style="resize:none;" lay-verify="required|content"></textarea>
+            <button class="sub"  type="submit" id="dosubmit" lay-filter="add" lay-submit="">
+                提交需求
+            </button>
+        </div>
+    </form>
+    <p>* 请认真填写需求信息，我们会２４小时内与您取得联系。</p>
+</div>
+<div class="footer">
+        <div class="footers">
+            <div class="footer1">
+                <h2>关注我们<b></b></h2>
+                <div class="clearfix"> <img src="/public/img/20190718224943.jpg" alt="" class="fl">
+                    <div class="fl">
+                        <p> 扫一扫<br>
+                            关注我们最新消息 </p>
+                        <a onclick="tips()">合作申请</a>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="footer2">
+                <h2>联系我们<b></b></h2>
+                <div class="div2-text">
+                    <p>在线客服</p>
+                    <strong>4006-353-588</strong>
+                    <p> <br>
+                        地址：福建福州仓山区百花洲路45号5层 </p>
+                </div>
+            </div>
+        
+            <div class="footer3">
+                <h2>网站导航<b></b></h2>
+                <p> <a href="/">首页 </a> <a href="">关于领军者</a> <a href="">产品中心</a> <a href="/article-Show">领军者动态</a>
+                    <a href="">联盟合作</a> <a href="">美缝施工</a>
+                    <a href="">联系我们</a> </p>
+        
+                <p> <br>
+                    版权所有： 福州领军者新材料有限公司 皖ICP备17016000号 </p>
+            </div>
+        
+        
+        </div>
+        </div>
+        <div class="copyright">
+                <p> 版权所有： 福州领军者新材料有限公司 皖ICP备17016000号-1</p>
+                </div>
+</div>
+<!-- 需求结束 -->
+<!-- 底部栏开始 -->
+
+<!-- 底部栏结束 -->
+<!-- 版权开始 -->
+
+<!-- 版权结束 -->
+	<script>
+			layui.use(['form', 'layer'],
+							function () {
+								$ = layui.jquery;
+								var form = layui.form,
+									layer = layui.layer;
+					
+								//自定义验证规则
+								form.verify({
+									name: function (value) {
+										if (value.length < 2) {
+											return '留下亲的全名哦~';
+										} if (!/^[\u4e00-\u9fa5]+$/gi.test(document.getElementById("name").value)) {
+											return '亲除了中文名还有其他名字吗~';										
+										}
+									},
+									content: function (value) {
+										 if (value.length < 2) {
+									return '总得说点什么吧~';
+								}
+							}
+								});
+							});
+		
+							function tips(){
+								layer.msg('请在上方填写合作详情~');
+							}
+		</script>
+		<script>
+			$('#myform').on('submit', function (e) {
+				e.preventDefault()
+				var formData = $(this).serialize()
+				$.ajax({
+					url: '/demand',
+					type: 'post',
+					data: formData,
+					dataType: 'json',
+					success: function (data) {
+						var err_code = data.err_code
+						if (err_code === 0) {
+							layer.alert("提交成功", {
+								icon: 6
+							}, function(){
+								location.reload();
+							});
+						}
+					}
+				})
+			});
+		</script>

@@ -16,7 +16,7 @@ var adminSchema = new Schema({
         required: true
     },
     create_time: {
-        type: Date,
+        type: String,
         default: Date.now
     },
     status: {

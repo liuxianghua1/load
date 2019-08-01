@@ -1,0 +1,85 @@
+<!-- 描述：顶部开始 -->
+<div class="top" style="zoom:1;width: 1519px; margin: 0 auto;">
+    <div class="package">
+        <div class="top-left">
+            <h3>欢迎来到领军者网站!</h3>
+        </div>
+        <div class="top-right">
+            <span class="phone"><img src="../public/img/phone.png" class="phone-img" />全国客服热线：<b>4006-353-588</b></span>
+            <button id="appear" type="button" class="btn" title="联系我们" data-toggle="appear" data-container="body"
+                data-placement="bottom" data-content="电话:17805985165">联系我们</button>
+            <button type="button" class="btn" title="关于我们" data-toggle="appear" data-container="body"
+                data-placement="bottom"
+                data-content="福州领军者新材料有限公司是一家集美缝原材料仓储与销售、产品研发与生产、成品大宗批发、OEM贴牌代工为一体的大型综合性高科技生产型企业.">关于我们</button>
+        </div>
+    </div>
+</div>
+<!-- 描述：顶部结束 -->
+
+<div class="nav clearfix" style="margin-top:50px;zoom:1;width: 1519px; margin: 0 auto;">
+    <a href="/"><img src="../public/img/logo.png" id="logo" /></a>
+    <ul class="navbar fr clearfix" id="nav">
+        <li id="test1">
+            <a href="/">首页<b></b></a>
+        </li>
+        <li>
+            <a href="#">关于领军者<b></b></a>
+            <div class="subnav">
+                <a href="#">关于我们</a>
+                <a href="#">荣誉资质</a>
+                <a href="#">企业文化</a>
+
+            </div>
+        </li>
+        <li>
+            <a href="#" id="changping">产品中心<b></b></a>
+            <div class="subnav">
+                <a href="#">美缝剂</a>
+                <a href="#">防水涂料</a>
+                <a href="#">瓷胶辅材</a>
+
+            </div>
+        </li>
+        <li id="ljz">
+            <a href="/article-Show" id="ljz">领军者动态<b></b></a>
+            <div class="subnav">
+                <a href="/article-Show">公司动态</a>
+            </div>
+        </li>
+        <li>
+            <a href="#">联盟合作<b></b></a>
+            <div class="subnav">
+                <a href="#">OEM代工</a>
+                <a href="#">经销代理</a>
+
+            </div>
+        </li>
+        <li>
+            <a href="#">美缝施工<b></b></a>
+            <div class="subnav">
+                <a href="#">美缝施工</a>
+
+            </div>
+        </li>
+        <li>
+            <a href="#">联系我们<b></b></a>
+            <div class="subnav">
+                <a href="#">联系我们</a>
+                <a href="#">网站留言</a>
+                <a href="#">网站地图</a>
+            </div>
+        </li>
+    </ul>
+</div>
+<script>
+    $(document).ready(function () {
+
+        $(".navbar li a").each(function () {
+            $this = $(this);
+            if ($this[0].href == String(window.location)) {
+                $("#test1").removeClass("on");
+                $this.parent().addClass("on");
+            }
+        });
+    });
+</script>

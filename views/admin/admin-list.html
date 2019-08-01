@@ -92,7 +92,6 @@
                     </a>
                     <a title="删除" href="/admin/delete?id={{ $value.id }}">
                     <i class="layui-icon" onclick="member_del(this,'/admin/delete?id={{ $value.id }}')">&#xe640;</i>
-                      <!-- href="/admin/delete?id={{ $value.id }}" -->
                     </a>
                   </td>
                 </tr>
@@ -163,17 +162,8 @@
     var deletes = layer.confirm('确认要删除吗？', function (index) {
       //发异步删除数据
         $(obj).parents("tr").remove();
-      layer.msg('已删除!',{icon: 1,time:100000});
+      layer.msg('已删除!',{icon: 1,time:1000});
       setTimeout("location.href = '/admin-list';",800);
-      // location.href='/admin/delete?id={{ $value.id }}'
-      // if (deletes) {
-      //   $(obj).parents("tr").remove();
-      //   layer.msg('已删除!', { icon: 1, time: 1000 });
-      //   setTimeout("location.href = '/admin-list';", 800);
-        
-      // } else {
-      //   return false
-      // }
     });
   }
 

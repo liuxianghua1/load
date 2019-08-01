@@ -1,6 +1,8 @@
 var mongoose = require('mongoose')
+var moment = require('moment')
+moment.locale('zh-cn')
+var today = moment().format('YYYY-MM-DD');
 mongoose.set('useFindAndModify', false)
-mongoose.connect('mongodb://localhost/load', {useNewUrlParser: true})
 var Schema = mongoose.Schema
 var articleSchema = new Schema({
     title: {
@@ -13,6 +15,13 @@ var articleSchema = new Schema({
     },
     Image: {
         type: String
+    },
+    dateline: {
+        type: String,
+        default: today
+    },
+    promulgator: {
+        type: String,
     }
 })
 

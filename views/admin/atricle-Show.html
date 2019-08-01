@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html style="margin: 0 auto;">
+
+<head>
+	<title>领军者动态</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--描述：引入layui -->
+	<script type="text/javascript" src="/public/lib/layui/layui.js" charset="utf-8"></script>
+	<!--引入样式表-->
+	<link rel="stylesheet" href="../public/css/Style.css" />
+
+	<!-- 引入导航栏的部件 -->
+	<script src="../public/js/jquery-2.2.3.min.js"></script>
+
+	<script src="../public/js/more.js"></script>
+
+	<link rel="stylesheet" href="../public/css/Nav.css" />
+
+	<!--描述：引入bootStrap-->
+	<link rel="stylesheet" href="../public/css/bootstrap.min.css" />
+
+	<script src="../public/js/jquery-2.1.1.min.js"></script>
+
+	<script src="../public/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="../public/js/script.js"></script>
+
+	<!--描述：引入顶部弹窗-->
+	<link rel="stylesheet" href="../public/css/appear.css" />
+	<!--描述:引入轮播图-->
+	<link rel="stylesheet" href="../public/css/Carousel.css" />
+	<script>
+		//对top栏弹窗的功能实现
+		$(function () {
+			$("[data-toggle='appear']").popover()
+		});
+	</script>
+	<style>
+	</style>
+</head>
+{{ include '../inherit/head.html' }}
+<img src="public/img/nbanner.jpg" style="width:1519px;">
+<div class="w1200" style="width: 1518x">
+	<div class="erji clearfix">
+		<div class="fl" style="width: 100%;height: 100%;">
+			<h2 style="font-size: 30px;color: #000;font-weight: bold;">领军者动态</h2>
+			<div class="erji-link fr"> 
+					<a href="/article-Show" class="on" style="float:right">公司动态 <b></b></a>     
+			
+					</div>
+			<h3 style="font-size: 40px;color: #333;font-weight: bold;margin-top: 10px;">news</h3>
+
+			<p style="color: #666;font-size: 14px;margin-top: 00px;padding-left: 0px;margin-bottom: 0px;">领军者为您解决一切问题
+			</p>
+		</div>
+
+	</div>
+
+</div>
+
+
+
+<div class="w1200">
+	<div class="newp-list">
+		<ul>
+		{{ each article }}
+			<li> <a href="/article?id={{ $value.id }}">
+					<div class="img-box fl"> <img
+							src="{{ $value.Image }}" alt=""> </div>
+					<div class="text-box fl">
+						<h3>{{ $value.title }}</h3>
+						<p>{{ $value.content}} </p>
+						<h5> <span class="span1">发布于：<b>{{ $value.dateline }}</b></span></h5>
+
+					</div>
+
+				</a>
+			</li>
+		{{ /each }}
+			
+		</ul>
+	</div>
+</div>
+<div class="w1200">
+
+	<div class="pager"> 
+		<span>1</span>
+ </div>
+
+</div>
+
+<body>
+		{{ include '../inherit/bottom.html' }}
+</body>	
+
+
+</html>

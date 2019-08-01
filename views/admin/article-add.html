@@ -13,103 +13,91 @@
 	<script type="text/javascript" src="/public/lib/layui/layui.js" charset="utf-8"></script>
 	<script type="text/javascript" src="/public/js/xadmin.js"></script>
 
-	
+
 
 </head>
 
 <body>
 	<div class="layui-fluid">
 		<div class="layui-row">
-			<form class="layui-form" id="article_add">
+				<form class="layui-form" id="article_add" action="/article-add" method="POST">
 				<div class="layui-form-item">
-						<label for="username" class="layui-form-label">
+						<label for="title" class="layui-form-label">
 							<span class="x-red">*</span>文章标题</label>
-						<div class="layui-input-inline" style="width: 660px;margin-right: 0px;">
-							<input type="text" placeholder="请输入标题" id="username" name="username" required="" lay-verify="required"
+						<div class="layui-input-inline">
+							<input type="text" placeholder="请输入标题" id="title"  name="title" required="" lay-verify="required"
 							 autocomplete="off" class="layui-input"></div>
 					</div>
 
+					<!-- 隐藏的发布人 -->
+					<div class="layui-form-item" hidden>
+							<label for="promulgator" class="layui-form-label">
+								<span class="x-red">*</span>发布人</label>
+							<div class="layui-input-inline">
+								<input type="text" id="promulgator"  name="promulgator" required="" lay-verify="required"
+								 autocomplete="off" readonly="readonly" class="layui-input" value="{{ admin.loginname }}"></div>
+						</div>
+		
 					<div class="layui-form-item layui-form-text">
-						<label for="desc" class="layui-form-label">
-							<span class="x-red">*</span>文章内容</label>
-							
-							<div class="layui-input-block">
-									<textarea placeholder="请输入内容" id="desc" name="desc"required="" lay-verify="required" class="layui-textarea" style="height: 300px;"></textarea>
+						<label for="content" class="layui-form-label">
+							文章内容</label><br><br><br>
+
+								<div id="editor" >
 								</div>
 					</div>
-					<div class="layui-input-block">
+					<input type="text" name="Image" id="Image" value="" src="" hidden/>
+					<input type="text" name="content" id="content" value="" src="" hidden/>
+					<button class="layui-btn" id="btn0" style="margin-left: 110px;">发布</button>
+					</form>
 
-				<input type="file" name="" id="file"  />
-				<img id="picture" src="" alt="" style="width: 500px;height: 300px;"/>
-				<br>
-				<br>
-				<br>
-				<button onclick="doUpload()"class="layui-btn">确定上传</button>
-				<br>
 
-					</div>
+		<input type="file" name="" id="file" style="position: absolute;
 
-				<div class="layui-form-item">
-				<br>
-				<br>
-				<label for="L_repass" class="layui-form-label"></label>
-					<button class="layui-btn"  lay-filter="add" lay-submit="" >发布</button></div>
-			</form>
-		</div>
+		bottom: 35px;
+		
+		left: 180px;" />
+		<button class="layui-btn" onclick="doUpload()" style="position: absolute;
+		bottom: 30px;
+		left: 380px;">封面上传</button>
+
+
+		<button class="layui-btn" id="imgdelete" style="position: absolute;
+		bottom: 30px;
+		left: 480px;">封面删除</button>
+<br>
+		<img src="" alt="" id="show" style="width: 300px;position: absolute;
+		left: 125px;">
+
+
+	</div>
 	</div>
 	<script src="/node_modules/jquery/dist/jquery.js"></script>
-	<script>
-		function doUpload(){
-		var file = $('#file').get(0).files[0]
-		let formdata = new FormData()
-		formdata.append('hehe', file)
-		console.log(file)
-		$.ajax({
-			url: '/upload',
-			type: 'post',
-			cache: false,
-			data: formData,
-			processData: false,
-			contentType: false,
-			success: function(data) {
-				var err_code = data.err_code
-				var url = `/public/uploads/${file.path}`
-				console.log(url)
-				if (err_code===0) {
-					alert('上传成功')
-					$('#picture').attr('src',`${data.img}`)
-				} else if(err_code===-1){
-					alert('尺寸过大')
-				}else if(err_code===-2){
-					alert('类型错误')
-				}
-			}
-		})
-		}
-	</script>
-	<script>
-		layui.use(['form', 'layer'],
-			function () {
-				$ = layui.jquery;
-				var form = layui.form,
-					layer = layui.layer;
+	<script type="text/javascript" src="/public/wangeditor/wangEditor.min.js"></script>
+	<script type="text/javascript">
+        //editor的构造器
+        var E = window.wangEditor
+        //实例化实例
+		var editor = new E('#editor')
+		
+		// editor.customConfig.uploadImgServer = '/upload'
+        
+        //生成富文本编辑器
+		editor.create()
 
-				
-			});
-	</script>
-	<!-- <script>
-				$('#article_add').on('submit', function (e) {
+
+		$('#article_add').on('submit', function (e) {
 					e.preventDefault()
-					var formData = $(this).serialize()
+					let content = editor.txt.html()
+					var formData = $(this).serialize()+content
 					$.ajax({
-						url: '/upload',
+						url: '/article-add',
 						type: 'post',
 						data: formData,
 						dataType: 'json',
 						success: function (data) {
 							var err_code = data.err_code
 							if (err_code === 0) {
-								layer.alert("注册成功", {
+								layer.alert("发布成功", {
 									icon: 6
 								},
 									function () {
@@ -119,15 +107,65 @@
 										// 可以对父窗口进行刷新 
 										xadmin.father_reload();
 									});
-							} else if (err_code === 1) {
-								layer.alert('用户名或者手机号已存在！')
 							} else if (err_code === 500) {
 								layer.alert('服务器忙，请稍后重试！')
 							}
 						}
 					})
 				})
-			</script> -->
+    </script>
+	<script>
+			function doUpload(){
+			var file = $('#file').get(0).files[0]
+			var formdata = new FormData()
+			formdata.append('hehe', file)
+			$.ajax({
+				url: '/upload',
+				type: 'post',
+				cache: false,
+				data: formdata,
+				processData: false,
+				contentType: false,
+				success: function(data) {
+					var err_code = data.err_code
+					if (err_code===0) {
+						layer.alert("上传成功", {
+									icon: 6
+								})
+						$('#Image').attr('value',`${data.img}`)
+						$('#show').attr('src',`${data.img}`)
+					} else if(err_code===-1){
+						layer.alert("图片尺寸太大", {
+									icon: 2
+								})	
+					}else if(err_code===-2){
+						layer.alert("类型不合格", {
+									icon: 2
+								})
+					}
+				}
+	
+			})
+			};
+
+			$(document).ready(function(){
+				$("#imgdelete").click(function(){
+                    $("#Image").val('')
+                    $('#show').attr('src','');
+				});
+});
+		</script>
+	<script>
+		layui.use(['form', 'layer'],
+			function () {
+				$ = layui.jquery;
+				var form = layui.form,
+					layer = layui.layer;
+
+
+			});
+	</script>
+
 </body>
 
 </html>

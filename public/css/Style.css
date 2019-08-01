@@ -52,9 +52,9 @@
 	line-height: 40px;
 }
 
-a:hover {
+/* a:hover {
 	color: white !important;
-}
+} */
 
 .border:hover .picture {
 	transition: all 0.8s;

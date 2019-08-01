@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html style="margin: 0 auto;">
+
+<head>
+	<title>{{ article.title }}</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--描述：引入layui -->
+	<script type="text/javascript" src="/public/lib/layui/layui.js" charset="utf-8"></script>
+	<!--引入样式表-->
+	<link rel="stylesheet" href="../public/css/Style.css" />
+
+	<!-- 引入导航栏的部件 -->
+	<script src="../public/js/jquery-2.2.3.min.js"></script>
+
+	<script src="../public/js/more.js"></script>
+
+	<link rel="stylesheet" href="../public/css/Nav.css" />
+
+	<!--描述：引入bootStrap-->
+	<link rel="stylesheet" href="../public/css/bootstrap.min.css" />
+
+	<script src="../public/js/jquery-2.1.1.min.js"></script>
+
+	<script src="../public/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="../public/js/script.js"></script>
+
+	<!--描述：引入顶部弹窗-->
+	<link rel="stylesheet" href="../public/css/appear.css" />
+	<!--描述:引入轮播图-->
+	<link rel="stylesheet" href="../public/css/Carousel.css" />
+	<script>
+		//对top栏弹窗的功能实现
+		$(function () {
+			$("[data-toggle='appear']").popover()
+		});
+		
+	</script>
+	<style>
+	</style>
+</head>
+{{ include '../inherit/head.html' }}
+
+<img src="public/img/nbanner.jpg" class="lingjunzheimg" style="width:1519px;">
+<input type="hidden" name="id" value="{{ article.id }}">
+<div class="atriclecontent">
+	<h2>{{ article.title }}</h2>
+	<span>发布者: {{ article.promulgator  }}</span>
+	<span>发布时间: {{ article.dateline }}</span>
+</div>
+<div class="content">
+	<div class="articleimg">
+			<img src="{{ article.Image }}">
+	</div>
+	<br>
+	<span>
+			{{@article.content}}
+	</span>
+
+</div>
+<div class="content" style="border-top: 1px solid #eee;
+margin-top: 20px;padding:25px 0;">
+	 <a href="" class="fenpian">上一篇：<span>浅谈美缝剂的发展</span></a>
+	 <a href="" class="fenpian">下一篇：<span>最后一页</span></a> 
+	 <br>
+	 <a href="/article-Show" class="back-btn">返回列表页</a> 
+	</div>
+<body>
+		{{ include '../inherit/bottom.html' }}
+		<script>
+					document.getElementById("ljz").classList.add("on");
+		</script>
+</body>	
+
+
+</html>
