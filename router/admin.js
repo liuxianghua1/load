@@ -26,6 +26,20 @@ router.get('/contentShow', checkLogin,function (req, res) {
     })
 })
 
+router.get('/demand-delete', checkLogin, function (req, res) {
+    var id = req.query.id
+    Demand.findByIdAndRemove(id, function (err) {
+        if (err) {
+            return res.status(500).json({
+                err_code: 500,
+                message: 'Server Error'
+            })
+        }
+    })
+})
+
+
+
 router.post('/admin', function (req, res) {
     // 表单数据
     var body = req.body

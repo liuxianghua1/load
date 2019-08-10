@@ -71,9 +71,9 @@
                                         <td onclick="xadmin.open('需求内容','/contentShow?id={{ $value.id }}',400,400)">{{ $value.content }}</td>
                                         <td>{{ $value.submit_time }}</td>
                                         <td class="td-manage">
-                                            <a title="查看"  onclick="xadmin.open('编辑','/article-add')" href="javascript:;">
+                                            <a title="查看"  onclick="xadmin.open('查看','/contentShow?id={{ $value.id }}')" href="javascript:;">
                                                 <i class="layui-icon">&#xe63c;</i></a>
-                                                <a title="删除" onclick="member_del(this,'/article-delete?id={{ $value.id }}')" href="/article-delete?id={{ $value.id }}" >
+                                                <a title="删除" onclick="member_del(this,'/demand-delete?id={{ $value.id }}')" href="/demand-delete?id={{ $value.id }}" >
                                                     <i class="layui-icon" href="javascript:;">&#xe640;</i>
                                                     </a>
                                         </td>
@@ -154,7 +154,7 @@
                             icon: 1,
                             time: 1000
                         });
-                        setTimeout("location.href = '/article-list';", 1000);
+                        setTimeout("location.href = '/demand-list';", 1000);
 
                     });
             }
