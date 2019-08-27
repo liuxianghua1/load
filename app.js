@@ -44,7 +44,7 @@ app.use('/',indexRouter)
 
 
 
-app.listen(3000,'192.168.5.90')
+app.listen(5000)
 // 本地ip访问
 
 // app.listen(3000)
