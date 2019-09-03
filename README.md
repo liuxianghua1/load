@@ -1,36 +1,13 @@
+Cnpm i安装依赖
 
-###node.js load###
+安装Redis环境缓存session Mongodb数据库
 
-先装express在批量装
-cnpm i -S express
-
-cnpm i express-art-template art-template body-parser mongoose blueimp-md5 express-session multer moment
-
-cnpm install -g nodemon
-
-cnpm install connect-redis --save
-
-设置持久化session
-先去搭建redis环境
-
-cnpm install redis connect-redis --save
+安装Boostrap@3.37 Jquery@2.21
 
 
-使用bootstrap v3.37及jquery2.21
 
-放入node_modules
+![1567503234593](C:\Users\asd\AppData\Roaming\Typora\typora-user-images\1567503234593.png)
 
-打开浏览器输入http://127.0.0.1:3000/
+![1567503264618](C:\Users\asd\AppData\Roaming\Typora\typora-user-images\1567503264618.png)
 
-进后台输入 http://127.0.0.1:3000/admin
-运行
-nodemon app.js
-
-浏览器输入http://127.0.0.1:3000/
-
-后台http://127.0.0.1:3000/admin
-
-loginname 折磨
-
-password 17805985165
-
+![1567503349709](C:\Users\asd\AppData\Roaming\Typora\typora-user-images\1567503349709.png)
